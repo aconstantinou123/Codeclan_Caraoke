@@ -39,21 +39,19 @@ class Room
   def play_song(song, guest)
     if @song_playing.empty? && guest.song == song.song_name
       @song_playing.push(song)
-      guest.wallet -= 2.00
-      return "#{@song_playing[0].song_name} now playing. #{@song_playing[0].song_name} is #{guest.name}'s favourite song"
+      puts "#{@song_playing[0].song_name} now playing. #{@song_playing[0].song_name} is #{guest.name}'s favourite song"
     elsif @song_playing.empty?
       @song_playing.push(song)
-      guest.wallet -= 2.00
-      "#{@song_playing[0].song_name} now playing."
+      puts "#{@song_playing[0].song_name} now playing."
     else
-      return "Song already playing"
+      puts "Song already playing"
     end
   end
 
   def stop_song
     if !@song_playing.empty?
       @song_playing.shift
-      return "Song stopped"
+      puts "Song stopped"
     end
   end
 
