@@ -6,7 +6,7 @@ class Room
 
   def initialize(room_name, guests, song_playing)
     @room_name = room_name
-    @guests = guests
+    @guests = guests || []
     @song_playing = song_playing || []
   end
 
@@ -36,25 +36,14 @@ class Room
   #   @guests.delete(guest)
   # end
 
-
-  # def play_song(song)
-  #   for guest in @guests
-  #     if @song_playing.empty? &&
-  #     if guest.song == song.song_name
-  #       @song_playing.push(song)
-  #       return "#{@song_playing[0].song_name} now playing. This is #{guest.name}'s favourite song'"
-  #     else
-  #       return "Song already playing"
-  #     end
-  #   end
-  # end
-
   def play_song(song, guest)
     if @song_playing.empty? && guest.song == song.song_name
       @song_playing.push(song)
+      guest.wallet -= 2.00
       return "#{@song_playing[0].song_name} now playing. #{@song_playing[0].song_name} is #{guest.name}'s favourite song"
     elsif @song_playing.empty?
       @song_playing.push(song)
+      guest.wallet -= 2.00
       "#{@song_playing[0].song_name} now playing."
     else
       return "Song already playing"
