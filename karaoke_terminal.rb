@@ -30,6 +30,29 @@ room0 = Room.new("Lobby", [], [])
 room1 = Room.new("Rock Room", [], [])
 room2 = Room.new("Hip Hop Room",[guest2, guest3],[song2])
 room3 = Room.new("Pop Room",[guest2, guest3, guest4, guest5],[])
+room4 = Room.new("Bar", [], [])
+
+drinks = [
+  {
+    name: "Vodka",
+    price: 4.50,
+    alcohol: 40,
+    stock: 5
+  },
+  {
+    name: "Beer",
+    price: 5.00,
+    alcohol: 10,
+    stock: 5
+  },
+  {
+    name: "Wine",
+    price: 7.50,
+    alcohol: 15,
+    stock: 5
+  }
+]
+
 
 print %x{clear}
 
@@ -58,7 +81,7 @@ answer.capitalize!
 
   print %x{clear}
 
-  puts "Which room would you like to go in? \n Rock Room,\n Hip Hop Room\n Pop Room\n Please write your answer."
+  puts "Which room would you like to go in? \n Rock Room,\n Hip Hop Room\n Pop Room\n Bar\n Please write your answer."
   puts "\n"
 
 until player.wallet == 0
@@ -103,8 +126,42 @@ until player.wallet == 0
         player.wallet -= 2.00
         puts "Good choice. You have £#{player.wallet}"
         puts "\n"
+
         puts "Please type Stop when you have finished listening"
         "\n"
+        puts "              __
+                           /  \
+                          |    |
+            _             |    |
+          /' |            | _  |
+         |   |            |    |
+         | _ |            |    |
+         |   |            |    |
+         |   |        __  | _  |
+         | _ |  __   /  \ |    |
+         |   | /  \ |    ||    |
+         |   ||    ||    ||    |       _---.
+         |   ||    ||    |. __ |     ./     |
+         | _. | -- || -- |    `|    /      //
+         |'   |    ||    |     |   /`     (/
+         |    |    ||    |     | ./       /
+         |    |.--.||.--.|  __ |/       .|
+         |  __|    ||    |-'            /
+         |-'   \__/  \__/             .|
+         |       _.-'                 /
+         |   _.-'      /             |
+         |            /             /
+         |           |             /
+         `           |            /
+          \          |          /'
+           |          `        /
+            \                .'
+            |                |
+            |                |
+            |                |
+            |                |
+"
+
 
         stop = gets.chomp
         if stop == 'Stop'
@@ -161,6 +218,59 @@ until player.wallet == 0
       player.wallet -= 2.00
       puts "Good choice. You have £#{player.wallet}"
       puts "\n"
+      puts"__________________$$$
+___________________$$$$
+____________________$$$$$
+_____________________$$$$$
+___________________$$$$$$$
+__________________$$$$$$$$
+__________________$$$$$$$
+_________$$$$___$$$$$$$$$
+__________$$$$__$$$$$$$$
+___________$$$$$$$$$$$$$
+___________$$$$$$$$$$$$
+________$$$$$$$$$$$$$$$
+__$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$___$$$$$$$$
+$$$$$$$_____$$$$$$$$
+_$$$$$$$____$$$$$$$$
+_$$$$$$$$__$$$$$$$$$
+_$$$$$$$$$_$$$$$$$$$
+__$$$$$$$$$$$$$$$$$
+__$$$$$$$$$$$$$$$$
+__$$$$$$$$$$$$$$$$
+__$$$$$$$$$$$$$$$
+__$$$$$$$$$$$$$$$
+___$$$$$$$$$$$$$$
+____$$$$$$$$$$$$$$$
+____$$$$$$$$$$$$$$$$$
+____$$$$$$$$$$$$_$$$$$
+____$$$$$$$$$$$$__$$$$$
+___$$$$$$$$$$$$$$__$$$$$
+___$$$$$$$$$$$$$$___$$$$$$
+____$$$$$$$$$$$$$$$$$$$$$$
+_____$$$$$$$$$$$$$$$$$$$$
+______$$$$$$$$$$$$$$$$$
+______$$$$$$$$$$$$$$$$
+_______$$$$$$$$$$$$$$$
+_______$$$$$$$$$$$$$$
+_________$$$$$$$$$$$$$$
+_________$$$$$$$$$$$$$$$
+_________$$$$$$$$$$$$$$$$
+_________$$$$$$$$$$$$$$$$
+_________$$$$$___$$$$$$$
+_________$$$$$
+_________$$$$$
+_________$$$$$
+_________$$$$$
+_________$$$$
+__________$$$
+__________$$$$$$$
+____________$$$$$$$$
+
+"
       puts "Please type Stop when you have finished listening"
       "\n"
 
@@ -240,6 +350,39 @@ until player.wallet == 0
         puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\nYou can also type Leave to go home\n"
         puts "\n"
 
+  elsif room == room4.room_name
+
+    puts "Welcome to the Bar. Please type what you would like to buy"
+
+    response = "Yes"
+
+  until player.wallet == 0 || response == "No"
+
+    for drink in drinks
+      puts "#{drink[:name]}          #{drink[:price]}"
+    end
+
+    drink_name = gets.chomp
+
+    "Excellent choice sir"
+    for drink in drinks
+      if drink_name == drink[:name]
+        player.wallet -= drink[:price]
+      end
+    end
+    puts player.wallet
+
+    puts "You now have £#{player.wallet} remaining\n"
+    puts "Would you like another drink? Type Yes or No"
+
+    response = ""
+
+    response = gets.chomp
+
+  end
+
+    puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\nYou can also type Leave to go home\n"
+    puts "\n"
 
   elsif room == "Leave"
     puts "Goodbye"
