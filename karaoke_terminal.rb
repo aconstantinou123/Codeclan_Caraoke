@@ -58,7 +58,7 @@ answer.capitalize!
 
   print %x{clear}
 
-  puts "Which room would you like to go in? \n Rock Room,\n Hip Hop Room\n Disco Room\n Please write your answer."
+  puts "Which room would you like to go in? \n Rock Room,\n Hip Hop Room\n Pop Room\n Please write your answer."
   puts "\n"
 
 until player.wallet == 0
@@ -122,8 +122,8 @@ until player.wallet == 0
 
     end
 
-      puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\n. You can also type Leave to go home\n"
-      puts "\n"
+        puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\n You can also type Leave to go home\n"
+        puts "\n"
 
 
 
