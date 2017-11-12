@@ -20,6 +20,7 @@ class Room
     return @guests.length
   end
 
+
   def check_in(guest)
     if @guests.length <= 5
     @guests.push(guest)
@@ -27,31 +28,33 @@ class Room
   else
     return "Room at full capacity. Please come back later"
   end
-  end
+end
 
   def check_out
-    @guests.shift
+    @guests.pop
   end
-  # def check_out(guest)
-  #   @guests.delete(guest)
-  # end
 
-  def play_song(song, guest)
-    if @song_playing.empty? && guest.song == song.song_name
-      @song_playing.push(song)
-      puts "#{@song_playing[0].song_name} now playing. #{@song_playing[0].song_name} is #{guest.name}'s favourite song"
-    elsif @song_playing.empty?
-      @song_playing.push(song)
-      puts "#{@song_playing[0].song_name} now playing."
-    else
-      puts "Song already playing"
-    end
-  end
+ # def check_out(guest)
+ #   @guests.delete(guest)
+ # end
+
+
+ def play_song(song, guest)
+   if @song_playing.empty? && guest.song == song.song_name
+     @song_playing.push(song)
+     return "#{@song_playing[0].song_name} now playing. #{@song_playing[0].song_name} is #{guest.name}'s favourite song"
+   elsif @song_playing.empty?
+     @song_playing.push(song)
+     return "#{@song_playing[0].song_name} now playing."
+   else
+     return "Song already playing"
+   end
+ end
 
   def stop_song
     if !@song_playing.empty?
       @song_playing.shift
-      puts "Song stopped"
+      return "Song stopped"
     end
   end
 

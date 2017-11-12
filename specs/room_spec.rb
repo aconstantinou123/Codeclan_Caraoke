@@ -13,6 +13,8 @@ class TestRoom < Minitest::Test
     @room2 = Room.new("Hip-Hop Room",[@guest2, @guest3],[@song2])
     @room3 = Room.new("Disco Room",[@guest2, @guest3, @guest4, @guest5],[])
 
+    @guests = [@guest,@guest2,@guest3,@guest4]
+
     @guest1 = Guest.new("Jimmy", 15.00, "Smell's like teen spirit")
     @guest2 = Guest.new("Mike", 17.00, "My Heart Will Go On")
     @guest3 = Guest.new("Andy", 20.00, "Master of Puppets")
