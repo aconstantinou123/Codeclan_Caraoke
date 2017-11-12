@@ -20,11 +20,11 @@ song6 = Song.new("Still D.R.E", "Dr. Dre")
 
 song7 = Song.new("My Heart Will Go On", "Celine Dion")
 song8 = Song.new("Hit Me Baby One More Time", "Britney Spears")
-song8 = Song.new("Mmmmbop", "Hanson")
+song9 = Song.new("Mmmmbop", "Hanson")
 
 rock_songs = [song1, song2, song3]
 hip_hop_songs = [song4, song5, song6]
-pop_songs = [song5, song6, song7]
+pop_songs = [song7, song8, song9]
 
 room0 = Room.new("Lobby", [], [])
 room1 = Room.new("Rock Room", [], [])
@@ -59,6 +59,7 @@ end
 print %x{clear}
 
 puts "Which room would you like to go in? \n Rock Room,\n Hip Hop Room\n Disco Room\n Please write your answer."
+puts "\n"
 
 until player.wallet == 0
 
@@ -79,6 +80,7 @@ until player.wallet == 0
     for song in rock_songs
       puts song.song_name
     end
+    puts "\n"
 
     player_song = gets.chomp
 
@@ -89,9 +91,9 @@ until player.wallet == 0
     elsif player_song == song3.song_name
       room1.play_song(song3, player)
     elsif player_song == "Leave"
-      room1.check_out
+      room2.check_out
       room0.check_in(player)
-    else puts "Sorry that song doesn't exist"
+    else puts "Sorry that song doesn't exist\n"
     end
 
     player.wallet -= 2.00
@@ -108,37 +110,96 @@ until player.wallet == 0
     print %x{clear}
 
     puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\n"
+    puts "\n"
 
 
 
   elsif room == room2.room_name
     room2.check_in(player)
-    puts "Welcome to the Hip Hop Room. You have £#{player.wallet}"
+    puts "Welcome to the Hip Hop Room. You have £#{player.wallet}\n"
+    puts "\n"
 
-    puts "Which song would you like to listen to? Master of puppets. It costs £2 to sing"
+    puts "Which song would you like to listen to? It costs £2 to sing\n"
+    puts "\n"
+
+    for song in  hip_hop_songs
+      puts song.song_name
+    end
+    puts "\n"
 
     player_song = gets.chomp
 
-    if player_song == song1.song_name
-      room1.play_song(song1, player)
+    if player_song == song4.song_name
+      room1.play_song(song4, player)
+    elsif player_song == song5.song_name
+      room1.play_song(song5, player)
+    elsif player_song == song6.song_name
+      room1.play_song(song6, player)
+    elsif player_song == "Leave"
+      room1.check_out
+      room0.check_in(player)
+    else puts "Sorry that song doesn't exist\n"
     end
 
+    player.wallet -= 2.00
     puts "Good choice. You have £#{player.wallet}"
+    puts "\n"
+    puts "Please type Stop when you have finished listening"
+    "\n"
 
+    stop = gets.chomp
+    if stop == 'Stop'
+      room1.stop_song
+    end
+
+    print %x{clear}
+
+    puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\n"
+    puts "\n"
 
 
   elsif room == room3.room_name
     room3.check_in(player)
-    puts "Welcome to the Pop Room. You have £#{player.wallet}"
+    puts "Welcome to the Pop Room. You have £#{player.wallet}\n"
+    puts "\n"
 
-    puts "Which song would you like to listen to? Master of puppets. It costs £2 to sing"
+    puts "Which song would you like to listen to? It costs £2 to sing\n"
+    puts "\n"
+
+    for song in  pop_songs
+      puts song.song_name
+    end
+    puts "\n"
 
     player_song = gets.chomp
 
-    if player_song == song1.song_name
-      room1.play_song(song1, player)
+    if player_song == song7.song_name
+      room1.play_song(song7, player)
+    elsif player_song == song8.song_name
+      room1.play_song(song8, player)
+    elsif player_song == song9.song_name
+      room1.play_song(song9, player)
+    elsif player_song == "Leave"
+      room1.check_out
+      room0.check_in(player)
+    else puts "Sorry that song doesn't exist\n"
     end
 
+    player.wallet -= 2.00
+    puts "Good choice. You have £#{player.wallet}"
+    puts "\n"
+    puts "Please type Stop when you have finished listening"
+    "\n"
+
+    stop = gets.chomp
+    if stop == 'Stop'
+      room1.stop_song
+    end
+
+    print %x{clear}
+
+    puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\n"
+    puts "\n"
 end
   puts "Good choice. You have £#{player.wallet}"
   # puts "Sorry ßthat room doesn't exit"
