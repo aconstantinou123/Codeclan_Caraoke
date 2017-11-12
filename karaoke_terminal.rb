@@ -119,6 +119,10 @@ until player.wallet == 0
     puts "Welcome to the Hip Hop Room. You have £#{player.wallet}\n"
     puts "\n"
 
+    response = "Yes"
+
+    until response == "No"
+
     puts "Which song would you like to listen to? It costs £2 to sing\n"
     puts "\n"
 
@@ -153,6 +157,15 @@ until player.wallet == 0
     end
 
     print %x{clear}
+
+    puts"Would you like to listen to another song? Type Yes or No"
+    puts "\n"
+
+    response = ""
+
+    response = gets.chomp
+
+    end
 
     puts "Thanks. Would you like to change room? Please choose:\n Rock Room \n Hip Hop Room \n Pop Room\n"
     puts "\n"
